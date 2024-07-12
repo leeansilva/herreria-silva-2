@@ -1,7 +1,7 @@
 "use client"
 import CaptionCarousel from "@/components/Carousel/Carousel";
 import Hero from "@/components/Hero/Hero";
-import QuienesSomos from "../components/QuienesSomos/QuienesSomos";
+import Quienes from "@/components/Quienes/Quienes";
 
 
 import { Box } from "@chakra-ui/react";
@@ -12,7 +12,7 @@ export default function Home() {
     <>
       <Hero />
       <Element name="quienesSomos">
-        <QuienesSomos />
+        <Quienes />
       </Element>
 
       <Element name="trabajos">
