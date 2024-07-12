@@ -200,9 +200,9 @@ function LinkDirecciones(props) {
               HERRAMIENTAS
             </MenuButton>
             <MenuList display={'flex'} flexDir={'column'} p={'0 5px'} bg={'black'}>
-              <LinkChakra as={Link} onClick={onclick} bg={'black'} color={'white'} href={'/herramientas/divisora'}>Divisora</LinkChakra>
-              <LinkChakra as={Link} onClick={onclick} bg={'black'} color={'white'} href={'/herramientas/calculadora'}>Calculadora de presupuestos</LinkChakra>
-              <LinkChakra as={Link} onClick={onclick} bg={'black'} color={'white'} href={'/herramientas/misPresupuestos'}>Mis presupuestos</LinkChakra>
+              <LinkChakra as={LinkNext} onClick={onclick} bg={'black'} color={'white'} href={'/herramientas/divisora'}>Divisora</LinkChakra>
+              <LinkChakra as={LinkNext} onClick={onclick} bg={'black'} color={'white'} href={'/herramientas/calculadora'}>Calculadora de presupuestos</LinkChakra>
+              <LinkChakra as={LinkNext} onClick={onclick} bg={'black'} color={'white'} href={'/herramientas/misPresupuestos'}>Mis presupuestos</LinkChakra>
             </MenuList>
           </Menu>
           :
