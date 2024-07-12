@@ -92,7 +92,7 @@ export default function Footer() {
                         <ListHeader>Horario de atención</ListHeader>
                         <Box as="a" href={'/'}>
                         Lunes a viernes de 08:00 a 13:00 y de 14:00 a 18:00.<br/>
-                        Sábado de 08:00 a 15:00 hs.
+                        Sábado de 08:00 a 17:00 hs.
                         </Box>
                     </Stack>
 
