@@ -1,7 +1,7 @@
 import React from 'react'
 import { Box, Container, Divider, Heading, Text } from '@chakra-ui/react'
 
-export default function quienesSomos() {
+export default function QuienesSomos() {
     return (
         <Container maxW={'8xl'} display={'flex'} flexDir={{base:'column', lg:'row'}} color={'white'} gap={35} p={20}>
                 <Box w={{base:'100%', md:'40%'}}>
