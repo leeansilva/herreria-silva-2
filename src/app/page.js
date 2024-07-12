@@ -1,7 +1,9 @@
 "use client"
 import CaptionCarousel from "@/components/Carousel/Carousel";
 import Hero from "@/components/Hero/Hero";
-import QuienesSomos from "@/components/QuienesSomos/QuienesSomos";
+import QuienesSomos from "../components/QuienesSomos/QuienesSomos";
+
+
 import { Box } from "@chakra-ui/react";
 import { Link, Element, Events, animateScroll as scroll, scrollSpy } from 'react-scroll';
 
