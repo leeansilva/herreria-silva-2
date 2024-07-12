@@ -3,6 +3,7 @@ import { Providers } from './chakra/provider'
 import { Box } from '@chakra-ui/react'
 import Navbar from '@/components/NavBar/NavBar'
 import Footer from '@/components/Footer/Footer'
+import Flotante from '@/components/Flotante/Flotante'
 
 const roboto = Roboto_Condensed({
   weight: ['300','400','700'],
@@ -18,6 +19,7 @@ export default function RootLayout({ children }) {
           <Navbar/>
           <Box bg={'#0d1117'} as='main' pt={{base:'119px', md:'139px', lg:'119px'}} style={{minHeight:'calc(100svh - 308px)'}}>
             {children}
+            <Flotante />
           </Box>
           <Footer />
         </Providers>

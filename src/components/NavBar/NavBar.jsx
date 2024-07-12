@@ -1,26 +1,54 @@
 "use client";
-import React from "react";
-import { Box, Container, HStack, Image, Spacer, Button, DrawerCloseButton, Drawer, DrawerOverlay, DrawerContent, DrawerHeader, Link as LinkChakra, useDisclosure, Flex, VStack, Select, Menu, MenuButton, MenuList, MenuItem,} from "@chakra-ui/react";
-import Link from "next/link";
-import { Heading, Input, IconButton } from "@chakra-ui/react";
+import React, { useEffect, useState } from "react";
+import { Box, Container, HStack, Image, Spacer, Button, DrawerCloseButton, Drawer, DrawerOverlay, DrawerContent, DrawerHeader, Link as LinkChakra, useDisclosure, Flex, VStack, Menu, MenuButton, MenuList, MenuItem, } from "@chakra-ui/react";
+import { Link as LinkNext } from "next/link";
+import { IconButton } from "@chakra-ui/react";
 import { ChevronDownIcon, HamburgerIcon } from "@chakra-ui/icons";
 import { DrawerBody } from "@chakra-ui/react";
-import { FaMapMarkerAlt, FaPhoneAlt, FaFacebookF, FaInstagram, FaWhatsapp,
+import {
+  FaMapMarkerAlt, FaPhoneAlt,
 } from "react-icons/fa";
-import { MdSmartphone } from "react-icons/md";
+import { Link, Element, Events, animateScroll as scroll, scrollSpy } from 'react-scroll';
+//key para usar herramientas especiales.
+// window.localStorage.setItem("uniqueKey","test")
 
 export default function Navbar() {
+  const [hideNavbar, setHideNavbar] = useState(false);
+  const [logoOpacity, setLogoOpacity] = useState(1);
+
+  const handleScroll = () => {
+    const scrollTop = window.scrollY;
+
+    if (scrollTop > 100) {
+      setHideNavbar(true);
+      setLogoOpacity(0); // Cambia la opacidad del logo a 0.5 cuando se oculta el navbar
+    } else {
+      setHideNavbar(false);
+      setLogoOpacity(1); // Restaura la opacidad del logo a 1 cuando se muestra el navbar
+    }
+  };
+
+
+  // Agrega el event listener al montar el componente
+  useEffect(() => {
+    window.addEventListener("scroll", handleScroll);
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
+
   return (
     <Container
-      bg={"#010409"}
-      zIndex={"1000"}
-      position={"fixed"}
+      bg={hideNavbar ? "rgba(1, 4, 9, 0.5)" : "#010409"}
+      zIndex="1000"
+      position="fixed"
       top={0}
-      boxShadow={"md"}
+      boxShadow="md"
       as="header"
       maxW={{ base: "100svw", lg: "100%" }}
       paddingBlock={5}
-      borderBottom={'2px solid #2b333a'}
+      borderBottom="2px solid #2b333a"
+      transition="background-color 0.3s ease"
     >
       <Container maxW={"8xl"}>
         <HStack
@@ -55,6 +83,8 @@ export default function Navbar() {
             alt="logo"
             src="img\logo.jpg"
             maxH={"80px"}
+            opacity={logoOpacity}
+            transition="opacity 0.3s ease"
           />
           <Spacer />
           <VStack gap={2} p={0} h={"full"}>
@@ -117,32 +147,67 @@ function DrawerButton({ display }) {
 
 function LinkDirecciones(props) {
   const { onclick } = props;
+  const [UK, setUK] = React.useState('')
+
+  const uniqueKey = "test"
+
+  React.useEffect(() => {
+    const localUniqueKey = window.localStorage.getItem("uniqueKey");
+    localUniqueKey && setUK(localUniqueKey);
+  }, [])
+
 
   //se mapea links, ruta y titulo
   const links = [
-    ["/", "Inicio"],
-    ["/quienesSomos", "Quiénes somos"],
-    ["/trabajos", "Trabajos"],
-    ["/contacto", "Contacto"],
+    ["quienesSomos", "Quiénes somos"],
+    ["trabajos", "Trabajos"],
   ];
 
   return (
     <Flex {...props}>
+      <LinkChakra as={LinkNext}
+        href="/"
+        onClick={onclick}
+      >
+        Inicio
+      </LinkChakra>
       {links.map((seccion, index) => (
-        <LinkChakra href={seccion[0]} key={index} as={Link} onClick={onclick}>
+        <LinkChakra
+          //  href={seccion[0]} 
+          key={index}
+          as={Link}
+          onClick={onclick}
+          to={seccion[0]}
+          spy={true}
+          smooth={true}
+          offset={-120}
+          duration={500}
+        >
           {seccion[1]}
         </LinkChakra>
       ))}
-      <Menu>
-        <MenuButton bg={'none'} colorScheme={{base:'white', md:'white'}} variant='link' fontSize={{base:'2xl', md:'xl', lg:'lg', xl:'xl'}} as={Button} p={{base:'4px 0 0 0', md:'4px 0 0 0', lg:'2px 0 0 0', xl:'2px 0 0 0'}} h={'max-content'} w={'max-content'}  rightIcon={<ChevronDownIcon />}>
-          HERRAMIENTAS
-        </MenuButton>
-        <MenuList display={'flex'} flexDir={'column'} p={'0 5px'}  bg={'black'}>
-          <LinkChakra as={Link} onClick={onclick} bg={'black'} color={'white'} href={'/herramientas/divisora'}>Divisora</LinkChakra>
-          <LinkChakra as={Link} onClick={onclick} bg={'black'} color={'white'} href={'/herramientas/calculadora'}>Calculadora de presupuestos</LinkChakra>
-          <LinkChakra as={Link} onClick={onclick} bg={'black'} color={'white'} href={'/herramientas/misPresupuestos'}>Mis presupuestos</LinkChakra>
-        </MenuList>
-      </Menu>
+      <LinkChakra
+        as={LinkNext}
+        href="/contacto"
+        onClick={onclick}
+      >
+        Contacto
+      </LinkChakra>
+      {
+        UK === uniqueKey ?
+          <Menu>
+            <MenuButton bg={'none'} colorScheme={{ base: 'white', md: 'white' }} variant='link' fontSize={{ base: '2xl', md: 'xl', lg: 'lg', xl: 'xl' }} as={Button} p={{ base: '4px 0 0 0', md: '4px 0 0 0', lg: '2px 0 0 0', xl: '2px 0 0 0' }} h={'max-content'} w={'max-content'} rightIcon={<ChevronDownIcon />}>
+              HERRAMIENTAS
+            </MenuButton>
+            <MenuList display={'flex'} flexDir={'column'} p={'0 5px'} bg={'black'}>
+              <LinkChakra as={Link} onClick={onclick} bg={'black'} color={'white'} href={'/herramientas/divisora'}>Divisora</LinkChakra>
+              <LinkChakra as={Link} onClick={onclick} bg={'black'} color={'white'} href={'/herramientas/calculadora'}>Calculadora de presupuestos</LinkChakra>
+              <LinkChakra as={Link} onClick={onclick} bg={'black'} color={'white'} href={'/herramientas/misPresupuestos'}>Mis presupuestos</LinkChakra>
+            </MenuList>
+          </Menu>
+          :
+          <></>
+      }
     </Flex>
   );
 }

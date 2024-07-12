@@ -8,13 +8,11 @@ export default function Hero() {
         position={"relative"}
         className="hero-container"
         bg={
-          "url(https://i.pinimg.com/originals/22/11/63/22116358dc31de9b32c8154b75446fad.jpg)"
+          "url(https://www.santafe.gob.ar/ms/impulsa/wp-content/uploads/sites/67/2024/05/cutting-metal-with-plasma-equipment-plant1-scaled.jpg)"
         }
         backgroundSize={"cover"}
-        backgroundPositionX={"center"}
-        backgroundPositionY={"center"}
         backgroundRepeat={"no-repeat"}
-        minH={"65svh"}
+        minH={"85svh"}
         w={"full"}
         filter={"brightness(40%)"}
       ></Box>
@@ -28,8 +26,8 @@ export default function Hero() {
         display={"flex"}
         flexDir={"column"}
         justifyContent={"space-around"}
-        h={"65svh"}
-        maxW="8xl"
+        h={"85svh"}
+        maxW={'8xl'}
       >
         <Box h={"max-content"}>
           <Text

@@ -1,6 +1,9 @@
 'use client'
 import { ChakraProvider, extendTheme } from '@chakra-ui/react'
 
+import { AppProgressBar as ProgressBar } from 'next-nprogress-bar';
+import '../chakra/style.css'
+
 const theme = extendTheme({
     styles: {
         global: {
@@ -29,6 +32,7 @@ const theme = extendTheme({
 export function Providers({ children }) {
     return (
         <ChakraProvider theme={theme}>
+            <ProgressBar options={{ showSpinner: false }} color='#1c9595' height='4px' />
             {children}
         </ChakraProvider>
     )
