@@ -20,7 +20,7 @@ const settings = {
   slidesToScroll: 1,
 }
 
-export default function CaptionCarousel() {
+export default function CaptionCarousel( {cards}) {
   // As we have used custom buttons, we need a reference variable to
   // change the state
   const [slider, setSlider] = React.useState(null)
@@ -30,28 +30,6 @@ export default function CaptionCarousel() {
   const top = useBreakpointValue({ base: '90%', md: '50%' })
   const side = useBreakpointValue({ base: '30%', md: '40px' })
 
-  // This list contains all the data for carousels
-  // This can be static or loaded from a server
-  const cards = [
-    {
-      title: 'Pérgolas',
-      text: "Elegí un diseño y nosotros lo hacemos realidad. ",
-      image:
-        'https://puertasdeforjamonterrey.com/wp-content/uploads/2023/03/pergolas-elegantes-para-casas-en-Monterrey.jpg',
-    },
-    {
-      title: 'Escaleras',
-      text: "Elegí un diseño y nosotros lo hacemos realidad. ",
-      image:
-        'https://www.hola.com/imagenes/decoracion/20191010150640/ideas-decoracion-diseno-escalera-interior/0-726-846/escaleras-12t-t.jpg',
-    },
-    {
-      title: 'Portones corredizos',
-      text: "Elegí un diseño y nosotros lo hacemos realidad.",
-      image:
-        'https://scontent-eze1-1.xx.fbcdn.net/v/t1.6435-9/119471595_3187983631270077_3470008902316656300_n.jpg?_nc_cat=108&ccb=1-7&_nc_sid=13d280&_nc_ohc=onmzwvTFAa4Q7kNvgGv-SXt&_nc_ht=scontent-eze1-1.xx&oh=00_AYCai_SMWMYgUxgY4bxrdbIfsQ0LTMQ9cosx7LJwDK5zFw&oe=66B3BCDE',
-    },
-  ]
 
   return (
     <Box position={'relative'} height={'600px'} width={'full'} overflow={'hidden'} maxH={'85svh'}>

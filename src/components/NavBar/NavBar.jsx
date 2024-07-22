@@ -160,7 +160,6 @@ function LinkDirecciones(props) {
   //se mapea links, ruta y titulo
   const links = [
     ["quienesSomos", "Quiénes somos"],
-    ["trabajos", "Trabajos"],
   ];
 
   return (
@@ -186,6 +185,12 @@ function LinkDirecciones(props) {
           {seccion[1]}
         </LinkChakra>
       ))}
+      <LinkChakra as={LinkNext}
+        href="/trabajos"
+        onClick={onclick}
+      >
+        Trabajos
+      </LinkChakra>
       <LinkChakra
         as={LinkNext}
         href="/contacto"
