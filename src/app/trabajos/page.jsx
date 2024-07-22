@@ -27,7 +27,7 @@ export default function page() {
               as={'h1'}
               color={"white"}
               fontWeight={600}
-              fontSize={{ base: "5xl", md: "5xl", lg: "5xl" }}
+              fontSize={{ base: "3xl", md: "4xl", lg: "5xl" }}
             >
               {trabajo.title}
             </Text>
